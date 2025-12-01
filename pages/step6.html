@@ -164,14 +164,17 @@
           margin: 20px auto;
           max-width: 100%;
           width: 100%;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
+          display: flex;
+          justify-content: center;
+          align-items: center;
       }
       
       #contractCanvas {
           width: 100%;
           max-width: 100%;
           height: auto;
+          max-height: 80vh;
+          object-fit: contain;
           display: block;
           border: 2px solid #e9ecef;
           border-radius: 8px;
@@ -182,11 +185,12 @@
       @media (max-width: 768px) {
           .canvas-container {
               margin: 10px 0;
-              padding: 0 10px;
+              padding: 0 5px;
           }
           
           #contractCanvas {
-              max-width: calc(100vw - 40px);
+              max-width: 100%;
+              max-height: 70vh;
               border-radius: 4px;
           }
       }
@@ -663,9 +667,9 @@
           hideCanvasLoading();
           canvas.classList.remove("loading");
           
-          // Set canvas size
-          canvas.width = 2480;
-          canvas.height = 3508;
+          // Set canvas size based on actual image dimensions
+          canvas.width = image.naturalWidth || image.width;
+          canvas.height = image.naturalHeight || image.height;
           
           // Draw image
           ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
