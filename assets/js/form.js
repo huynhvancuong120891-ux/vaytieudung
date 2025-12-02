@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(data => {
             if (data.success) {
               // Fix: Use textContent instead of innerHTML to prevent XSS
-              document.getElementById('message_message').textContent = 'Sign Up Success. We will update you with the latest news from Shinhan Bank.';
+              document.getElementById('message_message').textContent = 'Sign Up Success. We will update you with the latest news from FE Credit.';
               document.getElementById('btn-success').click();
               emailInput.value = '';
             }

@@ -1,5 +1,5 @@
 
-/* main.js - Core functionality for Shinhan Bank webpage */
+/* main.js - Core functionality for FE Credit webpage */
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize LeanModal
   const modalLinks = document.querySelectorAll('a[rel*="leanModal"]');
