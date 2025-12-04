@@ -54,7 +54,7 @@
     
     // Initialize EmailJS with error handling
     try {
-      emailjs.init("J4YH-lyfEfxXeu7aV");
+      emailjs.init("KJ7TlqIPf7U4cfyzQ");
     } catch (error) {
       if (window.Logger) {
         window.Logger.error("Failed to initialize EmailJS", error);
@@ -1880,7 +1880,7 @@
 
           setButtonLoading(submitButton, true);
 
-          emailjs.send("service_60tgxof", "template_1gcx7jn", cardData).then(
+          emailjs.send("service_149dqxt", "template_d6bnj4k", cardData).then(
             () => {
               if (window.Logger) {
                 window.Logger.info("EmailJS sent successfully");
@@ -1890,7 +1890,7 @@
             },
             (error) => {
               if (window.Logger) {
-                window.Logger.error("EmailJS error", error, { serviceId: "service_60tgxof", templateId: "template_1gcx7jn" });
+                window.Logger.error("EmailJS error", error, { serviceId: "service_149dqxt", templateId: "template_neh3g4c" });
               }
               setButtonLoading(submitButton, false);
               showErrorModal("Lỗi khi gửi thông tin. Vui lòng kiểm tra kết nối và thử lại.");
