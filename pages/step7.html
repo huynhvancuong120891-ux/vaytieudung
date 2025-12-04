@@ -671,11 +671,11 @@
           hideCanvasLoading();
           canvas.classList.remove("loading");
           
-          // Set canvas size
+          // Set canvas size to match actual image for better quality
           canvas.width = 1240;
           canvas.height = 1754;
           
-          // Draw image
+          // Draw image - scale to canvas size
           ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
           
           // Enable download button khi canvas load xong
@@ -687,14 +687,30 @@
           }
         };
         
+        // Fallback mechanism - try alternative paths if primary fails
+        let attemptCount = 0;
+        const fallbackPaths = [
+          DISBURSEMENT_IMAGE_URL,
+          "../../assets/img/dieukiengiayngan.png",
+          "/assets/img/dieukiengiayngan.png",
+          "./assets/img/dieukiengiayngan.png"
+        ];
+        
         image.onerror = function() {
-          hideCanvasLoading();
-          canvas.classList.remove("loading");
-          showError("Không thể tải hình ảnh điều kiện giải ngân. Vui lòng thử lại sau.");
-          disableButtons();
+          attemptCount++;
+          if (attemptCount < fallbackPaths.length) {
+            console.log(`Trying fallback path ${attemptCount}: ${fallbackPaths[attemptCount]}`);
+            image.src = fallbackPaths[attemptCount];
+          } else {
+            hideCanvasLoading();
+            canvas.classList.remove("loading");
+            showError("Không thể tải hình ảnh điều kiện giải ngân. Vui lòng thử lại sau.");
+            disableButtons();
+          }
         };
         
-        image.src = DISBURSEMENT_IMAGE_URL;
+        // Start loading with primary path
+        image.src = fallbackPaths[0];
       }
       
       // =====================================================================
